@@ -1,0 +1,18 @@
+
+.banner-area{
+   /* background: -moz-linear-gradient(0deg, #dfb5db 0%, #55a0b2 100%); */
+    background: #222831;
+    background-size: 100%;
+}
+.banner-area  {
+    height: 10% !important;
+width:100%;
+
+}
+.banner-area h5{
+    color: #fff;
+    font-size: 10px;
+    margin-left:2%;
+    padding-top:0.5%;
+    padding-bottom: 0.5%;
+}
