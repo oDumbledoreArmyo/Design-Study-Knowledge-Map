@@ -4,13 +4,13 @@ See website on :https://odumbledorearmyo.github.io/Design-Study-Knowledge-Map
 It's a knowledge map about the field of design study. It will provide a quick inquiry by using Neo4j graph database. This project use d3.js to visualize the map on web page. 
 
 ### Data source
-The database is create by myself based on literature review. So basically it's a personal knowledge database. 
+The database is create by myself based on literature review. So basically it's a personal knowledge database. The database will keep updating.
 
 ### Tech stack
 Neo4j(Cypher) + Java API + D3.js + HTML
 
 ### Future work
-(1) Fixed the problem — the duplicate node remains visible.  
+(1) Fix the problem — the duplicate nodes remains visible.  
 
 (2) Provide an English version.
 
