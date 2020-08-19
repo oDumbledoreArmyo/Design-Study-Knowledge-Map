@@ -1,1 +1,1 @@
-{"nodes_technology":],"links_technology":]}
+{"nodes_technology":[{"nodecolor":"icon4.png","name":"混合现实","id":35},{"nodecolor":"icon4.png","name":"计算机图形学","id":53},{"nodecolor":"icon4.png","name":"增强现实","id":34},{"nodecolor":"icon4.png","name":"计算机图形学","id":53},{"nodecolor":"icon4.png","name":"虚拟现实","id":33},{"nodecolor":"icon4.png","name":"计算机图形学","id":53}],"links_technology":[{"source":35,"target":53,"type":"属于"},{"source":34,"target":53,"type":"属于"},{"source":33,"target":53,"type":"属于"}]}
