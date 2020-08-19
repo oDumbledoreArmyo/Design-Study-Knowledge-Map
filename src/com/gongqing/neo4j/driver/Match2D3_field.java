@@ -1,4 +1,4 @@
-package com.cloudy.neo4j.driver;
+package com.gongqing.neo4j.driver;
 
 import org.neo4j.driver.Record;
 import org.neo4j.driver.*;
@@ -103,7 +103,7 @@ public class Match2D3_field {
 
 
         try {
-            FileOutputStream fos_field = new FileOutputStream("E:\\勇攀学术高峰\\输入\\教程\\neo4j_web\\/Neo4jSon_field.json");
+            FileOutputStream fos_field = new FileOutputStream("E:\\勇攀学术高峰\\输入\\教程\\neo4j_web\\Neo4jSon_field.json");
             fos_field.write(resultJson_field.getBytes());
             fos_field.close();
             fos_field.flush();

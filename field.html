@@ -74,7 +74,9 @@
                 this.vis=this.vis.append('g').attr('class','all')
                         .attr("width", defaultConfig.width)
                         .attr("height", defaultConfig.height)
-
+                this.config = {
+                    alphaDecay:0.003,  //控制力学模拟衰减率
+                }
                 //定义force对象，力导图
                 this.force = d3.forceSimulation()
                         .nodes(defaultConfig.data.nodes_field)
@@ -83,7 +85,8 @@
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
                         .force("charge",d3.forceManyBody())
                         .force("collide",d3.forceCollide(60).strength(0.2).iterations(5))
-
+                    // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
+                    .alphaDecay(this.config.alphaDecay)
                 //设置箭头属性
                 this.vis.append("svg:defs").selectAll("marker")
                         .data(["end"])
@@ -255,7 +258,6 @@
             });
         });
     </script>
-
          <div class="container1 banner-area">
              <div class="top-text">
                  <h5>MADE BY: GONGQING ===  LAST UPDATE: 2020/08/18 === TECH STACK: NEO4J(CYPHER) + JAVA API + D3.JS + HTML</h5>
@@ -263,7 +265,7 @@
              <div class="row">
                  <div class="top-notes show-all col-lg-2 col-md-2 col-2">
                      <a href="index.html">
-                         <h5 class="">·Show all·</h5>
+                         <h5 class="">·All·</h5>
                      </a>
                  </div>
                  <div class="top-notes field col-lg-2 col-md-2 col-2">
@@ -287,7 +289,7 @@
                      </a>
                  </div>
                  <div class="top-notes new-function col-lg-2 col-md-2 col-2">
-                     <h5 class="">Under construction...</h5>
+                     <h5 class="">Unknown...</h5>
                  </div>
              </div>
          </div>
