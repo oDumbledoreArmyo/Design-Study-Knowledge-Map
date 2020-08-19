@@ -1,0 +1,1 @@
+{"nodes_method":[{"nodecolor":"icon2.png","name":"访谈分析","id":15},{"nodecolor":"icon2.png","name":"主观数据挖掘分析","id":13},{"nodecolor":"icon2.png","name":"问卷分析","id":14},{"nodecolor":"icon2.png","name":"主观数据挖掘分析","id":13}],"links_method":[{"source":15,"target":13,"type":"属于"},{"source":14,"target":13,"type":"属于"}]}

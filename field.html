@@ -33,26 +33,26 @@
 </head>
 <body>
          <script type="text/javascript">
-          d3.json("Neo4jSon.json", function(json) {
+          d3.json("Neo4jSon_field.json", function(json_field) {
             function GroupExplorer(wrapper,config){
                 var defaultConfig={
-                    data:{"nodes":[],"links":[]},
+                    data:{"nodes_field":[],"links_field":[]},
                     width:window.innerWidth,
                     height:window.innerHeight,
                     distance:80
                 };
                 $.extend(true,defaultConfig,config);
 
-                defaultConfig.data.links.forEach(function (e) {
-                    if(typeof e.source=="number"&&typeof e.target=="number"){
-                        var sourceNode = defaultConfig.data.nodes.filter(function (n) {
-                                    return n.id === e.source;
+                defaultConfig.data.links_field.forEach(function (e_field) {
+                    if(typeof e_field.source=="number"&&typeof e_field.target=="number"){
+                        var sourceNode = defaultConfig.data.nodes_field.filter(function (n_field) {
+                                    return n_field.id === e_field.source;
                                 })[0],
-                                targetNode = defaultConfig.data.nodes.filter(function (n) {
-                                    return n.id === e.target;
+                                targetNode = defaultConfig.data.nodes_field.filter(function (n_field) {
+                                    return n_field.id === e_field.target;
                                 })[0];
-                        e.source = sourceNode;
-                        e.target = targetNode;
+                        e_field.source = sourceNode;
+                        e_field.target = targetNode;
                     }
                 });
 
@@ -68,7 +68,7 @@
                 this.vis = d3.select("body").append("svg:svg")
                         .attr("width", "100%")
                         .attr("height", defaultConfig.height)
-                    .attr("style","background:#dddddd;")
+                         .attr("style","background:#dddddd;")
                         .call(zoom).on("dblclick.zoom", null);
 
                 this.vis=this.vis.append('g').attr('class','all')
@@ -77,8 +77,8 @@
 
                 //定义force对象，力导图
                 this.force = d3.forceSimulation()
-                        .nodes(defaultConfig.data.nodes)
-                        .force("link", d3.forceLink(defaultConfig.data.links).distance(defaultConfig.distance))
+                        .nodes(defaultConfig.data.nodes_field)
+                        .force("link", d3.forceLink(defaultConfig.data.links_field).distance(defaultConfig.distance))
                         .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
                         .force("charge",d3.forceManyBody())
@@ -102,7 +102,7 @@
                         .attr('fill','#999');
 
                 this.link = this.vis.selectAll("line.link")
-                        .data(defaultConfig.data.links)
+                        .data(defaultConfig.data.links_field)
                         .enter().append("svg:line")
                         .attr("class", "link")
                         .attr('stroke-width',1)
@@ -145,7 +145,7 @@
                         var objIndex= obj.index;
                         dependsNode=dependsNode.concat([objIndex]);
                         dependsLinkAndText=dependsLinkAndText.concat([objIndex]);
-                        defaultConfig.data.links.forEach(function(lkItem){
+                        defaultConfig.data.links_field.forEach(function(lkItem){
                             if(objIndex==lkItem['source']['index']){
                                 dependsNode=dependsNode.concat([lkItem.target.index])
                             }else if(objIndex==lkItem['target']['index']){
@@ -171,7 +171,7 @@
                 };
 
                 this.node = this.vis.selectAll("g.node")
-                        .data(defaultConfig.data.nodes)
+                        .data(defaultConfig.data.nodes_field)
                         .enter().append("svg:g")
                         .attr("class", "node")
                         .call(_this.nodeDrag)    //绘图
@@ -220,7 +220,7 @@
 
                //边上的文字
                 this.linetext=this.vis.selectAll('.linetext')
-                        .data(defaultConfig.data.links)
+                        .data(defaultConfig.data.links_field)
                         .enter()
                         .append("text")
                         .attr("class", "linetext")
@@ -251,7 +251,7 @@
 
             }
             new GroupExplorer('body',{
-                data:json
+                data:json_field
             });
         });
     </script>
@@ -263,17 +263,23 @@
              <div class="row">
                  <div class="top-notes field col-lg-3 col-md-3 col-3">
                      <a href="field.html">
-                     <h5 class="">·Field·</h5>
+                         <h5 class="">·Field·</h5>
                      </a>
                  </div>
                  <div class="top-notes method col-lg-3 col-md-3 col-3">
+                     <a href="method.html">
                      <h5 class="">·Method·</h5>
+                     </a>
                  </div>
                  <div class="top-notes data col-lg-3 col-md-3 col-3">
+                     <a href="data.html">
                      <h5 class="">·Data·</h5>
+                     </a>
                  </div>
                  <div class="top-notes technology col-lg-3 col-md-3 col-3">
+                     <a href="technology.html">
                      <h5 class="">·Technology·</h5>
+                     </a>
                  </div>
              </div>
          </div>

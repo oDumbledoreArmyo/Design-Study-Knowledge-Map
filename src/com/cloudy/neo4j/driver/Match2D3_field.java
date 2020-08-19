@@ -98,14 +98,15 @@ public class Match2D3_field {
         System.out.println(nodes_field.toString());
         System.out.println(links_field.toString());
         String resultJson_field = "{"+nodes_field+","+links_field+"}";    //
-//        System.out.println(resultJson_field);
+        System.out.println(resultJson_field);
 //        System.out.println(nodes_field.toString());
 
 
         try {
-            FileOutputStream fos = new FileOutputStream("/Neo4jSon_field.json");
-            fos.write(resultJson_field.getBytes());
-            fos.close();
+            FileOutputStream fos_field = new FileOutputStream("E:\\勇攀学术高峰\\输入\\教程\\neo4j_web\\/Neo4jSon_field.json");
+            fos_field.write(resultJson_field.getBytes());
+            fos_field.close();
+            fos_field.flush();
         }catch (Exception e)
         {
             e.printStackTrace();
