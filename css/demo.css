@@ -1,9 +1,10 @@
 
 .banner-area .top-text{
    /* background: -moz-linear-gradient(0deg, #dfb5db 0%, #55a0b2 100%); */
-    background: #222831;
+    background: #000;
     background-size: 100%;
     height: 30px;
+    text-align: center;
 }
 
 .banner-area  {
@@ -11,42 +12,58 @@ width:100%;
 
 }
 
+
+
 .banner-area .top-text h5{
     color: #fff;
     font-size: 10px;
     margin-left:2%;
-    padding-top: 5px;
-
-
+    padding-top: 8px;
 }
 .top-notes h5{
     color: #fff;
     font-size: 20px;
+    text-align: center;
 }
+
+/*********************************hover事件*********************************/
 .field :hover{
     color: #fff;
     background: linear-gradient(0deg, #222831 0%, #877f81 100%);
+    text-decoration: none;
 }
 .method :hover{
     color: #fff;
     background: linear-gradient(0deg, #d5abaa 0%, #e8d5d3 100%);
+    text-decoration: none;
 }
 .data :hover{
     color: #fff;
     background: linear-gradient(0deg, #81a5a8 0%, #c2cfd1 100%);
+    text-decoration: none;
 }
 .technology :hover{
     color: #fff;
     background: linear-gradient(0deg, #756b87 0%, #b6adbb 100%);
+    text-decoration: none;
 }
+.show-all :hover{
+    color: #fff;
+    background: linear-gradient(0deg, #f6c675 0%, #f7dfb7 100%);
+    text-decoration: none;
+}
+
+
  .field{
     background: #222831;
+
     text-align: center;
 }
 
  .method{
      background : #d5abaa;
     text-align: center;
+
 }
 
  .data{
@@ -57,4 +74,20 @@ width:100%;
  .technology{
      background : #756b87;
     text-align: center;
+
 }
+
+ .show-all{
+     background: #f6c675;
+     text-align: center;
+
+ }
+ .new-function{
+     background: #999;
+     text-align: center;
+
+ }
+
+ .new-function h5{
+     font-size: 15px;
+ }
