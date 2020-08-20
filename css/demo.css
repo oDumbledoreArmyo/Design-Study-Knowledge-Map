@@ -64,7 +64,9 @@ width:100%;
     border-radius: 60px;
 }
 /***********************************************************************/
-
+.chosen-btn{
+   box-shadow:0 0 8px #393939;
+}
 .bkg{
     background: #f1f1f1;
     position: fixed;
@@ -73,7 +75,7 @@ width:100%;
     border-radius: 60px;
     right: 10px;
     top: 90px;
-    box-shadow:0 0 15px #a3a3a3;
+    box-shadow:0 0 10px #686868;
 }
  .field{
     background: #222831;
