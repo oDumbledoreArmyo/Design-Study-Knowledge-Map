@@ -31,7 +31,7 @@ public class Match2D3_usedto {
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result_usedto = session.run(
                 //!!!查库语句在这!!!
-             "MATCH p = ()-[:用于]->() RETURN p"
+             "MATCH p = ()-[:使用]->() RETURN p"
                     );
 
 

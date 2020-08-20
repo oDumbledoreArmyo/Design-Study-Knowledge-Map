@@ -104,7 +104,7 @@
                         .attr("orient", "auto")
                         .append("svg:path")
                         .attr("d", "M0,-5L10,0L0,5")
-                        .attr('fill','#999');
+                        .attr('fill','#bbb');
 
                 this.link = this.vis.selectAll("line.link")
                         .data(defaultConfig.data.links)
@@ -115,7 +115,7 @@
                         .attr("x2", function(d) { return d.target.x; })
                         .attr("y2", function(d) { return d.target.y; })
                         .attr("marker-end","url(#arrow)")
-                        .attr('stroke','#999');
+                        .attr('stroke','#bbb');
 
                 var dragstart=function(d, i) {
                     if (!d3.event.active) _that.simulation.alphaTarget(0.003).restart();

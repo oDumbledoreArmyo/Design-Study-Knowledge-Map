@@ -31,7 +31,7 @@ public class Match2D3_belongto {
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result_belongto = session.run(
                 //!!!查库语句在这!!!
-             "MATCH p = ()-[:属于]->() RETURN p"
+             "MATCH p = ()-[:从属]->() RETURN p"
                     );
 
 

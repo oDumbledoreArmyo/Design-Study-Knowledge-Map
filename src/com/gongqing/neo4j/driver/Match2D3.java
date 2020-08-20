@@ -31,7 +31,8 @@ public class Match2D3 {
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result = session.run(
                 //!!!查库语句在这!!!
-             "MATCH p=()-[]->() RETURN p"
+             //"MATCH p=()-[]->() RETURN p"
+                "match p= ()-[]->() return p"
                     );
 
 
