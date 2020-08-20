@@ -54,7 +54,7 @@ width:100%;
 }
 .new-function :hover{
     color: #fff;
-    background: linear-gradient(0deg, #f6c675 0%, #f7dfb7 100%);
+    background: linear-gradient(0deg, #888 0%, #ccc 100%);
     text-decoration: none;
 }
 /***********************************************************************/
@@ -95,4 +95,8 @@ width:100%;
      background: #888;
      height: 30px;
      text-align: center;
+ }
+
+ .circle :hover{
+     margin-top: 10px;
  }

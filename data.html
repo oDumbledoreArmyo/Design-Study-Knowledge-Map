@@ -117,9 +117,13 @@
                         .attr('stroke','#999');
 
                 var dragstart=function(d, i) {
+                    if (!d3.event.active) _that.simulation.alphaTarget(0.003).restart();
+                    d3.event.subject.fx = d.x;
+                    d3.event.subject.fy = d.y;
                     console.info(d3.event.subject)
                     _this.force.stop();
                     d3.event.sourceEvent.stopPropagation();
+
                 };
 
                 var dragmove=function(d, i) {
@@ -127,10 +131,13 @@
                     d.py += d3.event.dy;
                     d.x += d3.event.dx;
                     d.y += d3.event.dy;
+                    d3.event.subject.fx = d3.event.x;
+                    d3.event.subject.fy = d3.event.y;
                     _this.tick();
                 };
 
                 var dragend=function(d, i) {
+                    if (!d3.event.active) _that.simulation.alphaTarget(0);
                     d3.event.subject.fx = null;
                     d3.event.subject.fy = null;
                     _this.force.restart();
@@ -217,7 +224,7 @@
                         .attr("class", "nodetext")
                         .attr("dy", "5px")
                         .attr("dx", "0px")
-                        .attr("style","font-size:10px;fill:#fff;")
+                        .attr("style","font-size:10px;fill:#fff;font-family:方正粗雅宋简体")
                         .attr('text-anchor','middle')
                         .text(function(d) { return d.name });
 
