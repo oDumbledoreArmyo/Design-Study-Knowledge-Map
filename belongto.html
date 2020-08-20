@@ -33,26 +33,26 @@
 </head>
 <body>
          <script type="text/javascript">
-          d3.json("Neo4jSon_field.json", function(json_field) {
+          d3.json("Neo4jSon_belongto.json", function(json_belongto) {
             function GroupExplorer(wrapper,config){
                 var defaultConfig={
-                    data:{"nodes_field":[],"links_field":[]},
+                    data:{"nodes_belongto":[],"links_belongto":[]},
                     width:window.innerWidth,
                     height:window.innerHeight,
                     distance:80
                 };
                 $.extend(true,defaultConfig,config);
 
-                defaultConfig.data.links_field.forEach(function (e_field) {
-                    if(typeof e_field.source=="number"&&typeof e_field.target=="number"){
-                        var sourceNode = defaultConfig.data.nodes_field.filter(function (n_field) {
-                                    return n_field.id === e_field.source;
+                defaultConfig.data.links_belongto.forEach(function (e_belongto) {
+                    if(typeof e_belongto.source=="number"&&typeof e_belongto.target=="number"){
+                        var sourceNode = defaultConfig.data.nodes_belongto.filter(function (n_belongto) {
+                                    return n_belongto.id === e_belongto.source;
                                 })[0],
-                                targetNode = defaultConfig.data.nodes_field.filter(function (n_field) {
-                                    return n_field.id === e_field.target;
+                                targetNode = defaultConfig.data.nodes_belongto.filter(function (n_belongto) {
+                                    return n_belongto.id === e_belongto.target;
                                 })[0];
-                        e_field.source = sourceNode;
-                        e_field.target = targetNode;
+                        e_belongto.source = sourceNode;
+                        e_belongto.target = targetNode;
                     }
                 });
 
@@ -79,8 +79,8 @@
                 }
                 //定义force对象，力导图
                 this.force = d3.forceSimulation()
-                        .nodes(defaultConfig.data.nodes_field)
-                        .force("link", d3.forceLink(defaultConfig.data.links_field).distance(defaultConfig.distance))
+                        .nodes(defaultConfig.data.nodes_belongto)
+                        .force("link", d3.forceLink(defaultConfig.data.links_belongto).distance(defaultConfig.distance))
                         .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
                         .force("charge",d3.forceManyBody())
@@ -105,7 +105,7 @@
                         .attr('fill','#999');
 
                 this.link = this.vis.selectAll("line.link")
-                        .data(defaultConfig.data.links_field)
+                        .data(defaultConfig.data.links_belongto)
                         .enter().append("svg:line")
                         .attr("class", "link")
                         .attr('stroke-width',1)
@@ -148,7 +148,7 @@
                         var objIndex= obj.index;
                         dependsNode=dependsNode.concat([objIndex]);
                         dependsLinkAndText=dependsLinkAndText.concat([objIndex]);
-                        defaultConfig.data.links_field.forEach(function(lkItem){
+                        defaultConfig.data.links_belongto.forEach(function(lkItem){
                             if(objIndex==lkItem['source']['index']){
                                 dependsNode=dependsNode.concat([lkItem.target.index])
                             }else if(objIndex==lkItem['target']['index']){
@@ -174,7 +174,7 @@
                 };
 
                 this.node = this.vis.selectAll("g.node")
-                        .data(defaultConfig.data.nodes_field)
+                        .data(defaultConfig.data.nodes_belongto)
                         .enter().append("svg:g")
                         .attr("class", "node")
                         .call(_this.nodeDrag)    //绘图
@@ -223,7 +223,7 @@
 
                //边上的文字
                 this.linetext=this.vis.selectAll('.linetext')
-                        .data(defaultConfig.data.links_field)
+                        .data(defaultConfig.data.links_belongto)
                         .enter()
                         .append("text")
                         .attr("class", "linetext")
@@ -254,7 +254,7 @@
 
             }
             new GroupExplorer('body',{
-                data:json_field
+                data:json_belongto
             });
         });
     </script>

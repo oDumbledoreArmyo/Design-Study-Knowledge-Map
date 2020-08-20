@@ -103,7 +103,7 @@ public class Match2D3 {
 
 
         try {
-            FileOutputStream fos = new FileOutputStream("E:\\勇攀学术高峰\\输入\\教程\\neo4j_web\\Neo4jSon.json");
+            FileOutputStream fos = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon.json");
             fos.write(resultJson.getBytes());
             fos.close();
         }catch (Exception e)

@@ -15,7 +15,7 @@ Merge (n14:Method {name:"主观数据挖掘分析"})
 Merge (n15:Method {name:"问卷分析"})
 Merge (n16:Method {name:"访谈分析"})
 Merge (n17:Field {name:"人机交互"})
-Merge (n18:Field {name:"文化创意设计"})
+Merge (n18:Field {name:"文化设计"})
 Merge (n19:Field {name:"游客行为"})
 Merge (n20:Field {name:"旅游社交"})
 Merge (n21:Method {name:"大数据挖掘分析"})
@@ -24,7 +24,7 @@ Merge (n23:Data {name:"交易数据"})
 Merge (n24:Field {name:"旅游产品"})
 Merge (n25:Data {name:"行为数据"})
 Merge (n26:Data {name:"生理数据"})
-Merge (n27:Field  {name:"交互设计"})
+Merge (n27:Data {name:"大数据"})
 Merge (n28:Field  {name:"文化产品设计"})
 Merge (n29:Field  {name:"服务设计"})
 Merge (n30:Field  {name:"符号学"})
@@ -52,19 +52,26 @@ Merge (n51:Data  {name:"在线文本数据"})
 Merge (n52:Field  {name:"网页设计"})
 Merge (n53:Field  {name:"实体产品设计"})
 Merge(n54:Technology  {name:"计算机图形学"}) 
+Merge (n55:Field  {name:"博物馆展示设计"})
+Merge (n56:Technology  {name:"网络技术"})
+Merge (n57:Data  {name:"小数据"})
+Merge (n58:Technology  {name:"计算机仿真技术"})
+Merge (n59:Data  {name:"脑电数据"})
+Merge (n60:Data  {name:"皮电数据"})
 
 Match (n1:Field {name:"旅游设计"}) , (n24:Field {name:"旅游产品"}) merge (n1)<-[:属于]-(n24) ;
 Match (n:Field {name:"旅游设计"}) , (m:Field {name:"游客行为"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"服务设计"}) , (m:Field {name:"旅游设计"}) merge (n)<-[:属于]-(m) ;
 Match (n:Field {name:"旅游设计"}) , (m:Field {name:"游客行为"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"旅游设计"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"虚拟展示"}) merge (n)<-[:属于]-(m) ;
-
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"文化产品设计"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"非物质文化遗产"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"符号学"}) merge (n)<-[:属于]-(m);
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"乡村文化"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"文化认知"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"文化创意设计"}) , (m:Field {name:"跨文化行为"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"旅游设计"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"博物馆展示设计"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"旅游项目"}) , (m:Field {name:"博物馆展示设计"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"文化产品设计"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"非物质文化遗产"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"符号学"}) merge (n)-[:属于]->(m);
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"乡村文化"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"文化认知"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"跨文化行为"}) merge (n)<-[:属于]-(m) ;
 Match (n:Field {name:"游客行为"}) , (m:Field {name:"旅游社交"}) merge (n)<-[:属于]-(m) ;
 Match (n:Field {name:"游客行为"}) , (m:Field {name:"游客动态"}) merge (n)<-[:属于]-(m) ;
 Match (n:Field {name:"旅游产品"}) , (m:Field {name:"纪念品"}) merge (n)<-[:属于]-(m) ;
@@ -73,9 +80,7 @@ Match (n:Field {name:"人机交互"}) , (m:Field {name:"感性工学"}) merge (n
 Match (n:Field {name:"人机交互"}) , (m:Field {name:"可穿戴设备"}) merge (n)<-[:属于]-(m) ;
 Match (n:Field {name:"人机交互"}) , (m:Field {name:"注意力"}) merge (n)<-[:属于]-(m) ;
 Match (n:Field {name:"人机交互"}) , (m:Field {name:"虚拟展示"}) merge (n)<-[:属于]-(m) ;
-Match (n:Method {name:"大数据挖掘分析"}) , (m:Data {name:"用户数据"}) merge (n)<-[:用于]-(m) ;
-Match (n:Method {name:"大数据挖掘分析"}) , (m:Data {name:"交易数据"}) merge (n)<-[:用于]-(m) ;
-Match (n:Method {name:"大数据挖掘分析"}) , (m:Data {name:"设备数据"}) merge (n)<-[:用于]-(m) ;
+Match (n:Method {name:"大数据挖掘分析"}) , (m:Data {name:"大数据"}) merge (n)<-[:用于]-(m) ;
 Match (n:Data {name:"设备数据"}) , (m:Data {name:"地理位置数据"}) merge (n)<-[:属于]-(m) ;
 Match (n:Data {name:"设备数据"}) , (m:Data {name:"杂项设备数据"}) merge (n)<-[:属于]-(m) ;
 Match (n:Data {name:"杂项设备数据"}) , (m:Data {name:"RFID数据"}) merge (n)<-[:属于]-(m) ;
@@ -96,14 +101,17 @@ Match (n:Method {name:"主观数据挖掘分析"}) , (m:Method {name:"问卷分�
 Match (n:Method {name:"主观数据挖掘分析"}) , (m:Method {name:"访谈分析"}) merge (n)<-[:属于]-(m) ;
 Match (n:Data {name:"生理数据"}) , (m:Data {name:"触觉数据"}) merge (n)<-[:属于]-(m) ;
 Match (n:Data {name:"生理数据"}) , (m:Data {name:"眼动数据"}) merge (n)<-[:属于]-(m) ;
-Match (n:Field {name:"网页设计"}) , (m:Field {name:"虚拟展示"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"生理数据"}) , (m:Data {name:"脑电数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"生理数据"}) , (m:Data {name:"皮电数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"网页设计"}) , (m:Technology {name:"网络技术"}) merge (n)<-[:用于]-(m) ;
+Match (n:Field {name:"博物馆展示设计"}) , (m:Field {name:"虚拟展示"}) merge (n)<-[:属于]-(m) ;
 Match (n:Data {name:"生理数据"}) , (m:Field {name:"注意力"}) merge (n)-[:用于]->(m) ;
-Match (n:Data {name:"生理数据"}) , (m:Field {name:"交互设计"}) merge (n)-[:用于]->(m) ;
+Match (n:Data {name:"生理数据"}) , (m:Field {name:"人机交互"}) merge (n)-[:用于]->(m) ;
 Match (n:Data {name:"生理数据"}) , (m:Field {name:"实体产品设计"}) merge (n)-[:用于]->(m) ;
 Match (n:Data {name:"行为数据"}) , (m:Field {name:"注意力"}) merge (n)-[:用于]->(m) ;
-Match (n:Technology {name:"虚拟现实"}) , (m:Field {name:"交互设计"}) merge (n)-[:用于]->(m) ;
-Match (n:Technology {name:"增强现实"}) , (m:Field {name:"交互设计"}) merge (n)-[:用于]->(m) ;
-Match (n:Technology {name:"混合现实"}) , (m:Field {name:"交互设计"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology {name:"虚拟现实"}) , (m:Field {name:"人机交互"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology {name:"增强现实"}) , (m:Field {name:"人机交互"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology {name:"混合现实"}) , (m:Field {name:"人机交互"}) merge (n)-[:用于]->(m) ;
 Match (n:Data {name:"在线文本数据"}) , (m:Field {name:"旅游项目"}) merge (n)-[:用于]->(m) ;
 Match (n:Data {name:"在线文本数据"}) , (m:Field {name:"纪念品"}) merge (n)-[:用于]->(m) ;
 Match (n:Data {name:"网络搜索数据"}) , (m:Field {name:"纪念品"}) merge (n)-[:用于]->(m) ;
@@ -121,10 +129,24 @@ Match (n:Method  {name:"主观数据挖掘分析"}) , (m:Field {name:"感性工�
 Match (n:Method {name:"主观数据挖掘分析"}) , (m:Field {name:"实体产品设计"}) merge (n)-[:用于]->(m) ;
 Match (n:Method {name:"主观数据挖掘分析"}) , (m:Field {name:"网页设计"}) merge (n)-[:用于]->(m) ;
 Match (n:Method {name:"主观数据挖掘分析"}) , (m:Field {name:"纪念品"}) merge (n)-[:用于]->(m) ;
-
-Match (n:Technology  {name:"计算机图形学"}) , (m:Technology  {name:"虚拟现实"}) merge (n)<-[:属于]-(m) ;
-Match (n:Technology  {name:"计算机图形学"}) , (m:Technology  {name:"增强现实"}) merge (n)<-[:属于]-(m) ;
-Match (n:Technology  {name:"计算机图形学"}) , (m:Technology  {name:"混合现实"}) merge (n)<-[:属于]-(m) ;
+Match (n:Technology  {name:"计算机图形学"}) , (m:Technology  {name:"虚拟现实"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology  {name:"计算机图形学"}) , (m:Technology  {name:"增强现实"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology  {name:"计算机图形学"}) , (m:Technology  {name:"混合现实"}) merge (n)-[:用于]->(m) ;
+Match (n:Data {name:"大数据"}) , (m:Data {name:"用户数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"大数据"}) , (m:Data {name:"交易数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"大数据"}) , (m:Data {name:"设备数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Field {name:"纪念品"}) , (m:Field {name:"实体产品设计"}) merge (n)-[:属于]->(m) ;
+Match (n:Field {name:"虚拟展示"}) , (m:Technology {name:"网络技术"}) merge (n)<-[:用于]-(m) ;
+Match (n:Field {name:"虚拟展示"}) , (m:Data {name:"生理数据"}) merge (n)<-[:用于]-(m) ;
+Match (n:Data {name:"小数据"}) , (m:Data {name:"行为数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"小数据"}) , (m:Data {name:"生理数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"小数据"}) , (m:Data {name:"主观数据"}) merge (n)<-[:属于]-(m) ;
+Match (n:Data {name:"主观数据"}) , (m:Method {name:"主观数据挖掘分析"}) merge (n)<-[:用于]-(m) ;
+Match (n:Field {name:"虚拟展示"}) , (m:Technology {name:"虚拟触觉"}) merge (n)<-[:用于]-(m) ;
+Match (n:Technology  {name:"计算机仿真技术"}) , (m:Technology  {name:"虚拟现实"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology  {name:"计算机仿真技术"}) , (m:Technology  {name:"增强现实"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology  {name:"计算机仿真技术"}) , (m:Technology  {name:"混合现实"}) merge (n)-[:用于]->(m) ;
+Match (n:Technology  {name:"计算机仿真技术"}) , (m:Technology  {name:"虚拟触觉"}) merge (n)-[:用于]->(m) ;
 
 Match (n:Field) set n.nodecolor='icon1.png' return n;
 Match (n:Method) set n.nodecolor='icon2.png' return n;
