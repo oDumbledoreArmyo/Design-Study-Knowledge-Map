@@ -20,7 +20,7 @@ width:100%;
     color: #fff;
     font-size: 80%;
     text-align: center;
-    line-height:30px;
+    line-height:60px;
 }
 
 .new-function h5{
@@ -31,72 +31,136 @@ width:100%;
     color: #fff;
     background: linear-gradient(0deg, #222831 0%, #877f81 100%);
     text-decoration: none;
+    border-radius: 60px;
 }
 .method :hover{
     color: #fff;
     background: linear-gradient(0deg, #d5abaa 0%, #e8d5d3 100%);
     text-decoration: none;
+    border-radius: 60px;
 }
 .data :hover{
     color: #fff;
     background: linear-gradient(0deg, #81a5a8 0%, #c2cfd1 100%);
     text-decoration: none;
+    border-radius: 60px;
 }
 .technology :hover{
     color: #fff;
     background: linear-gradient(0deg, #756b87 0%, #b6adbb 100%);
     text-decoration: none;
+    border-radius: 60px;
 }
 .show-all :hover{
     color: #fff;
     background: linear-gradient(0deg, #f6c675 0%, #f7dfb7 100%);
     text-decoration: none;
+    border-radius: 60px;
 }
 .new-function :hover{
     color: #fff;
     background: linear-gradient(0deg, #888 0%, #ccc 100%);
     text-decoration: none;
+    border-radius: 60px;
 }
 /***********************************************************************/
 
-
+.bkg{
+    background: #f1f1f1;
+    position: fixed;
+    width: 80px;
+    height: 440px;
+    border-radius: 60px;
+    right: 10px;
+    top: 90px;
+    box-shadow:0 0 15px #a3a3a3;
+}
  .field{
     background: #222831;
-     height: 30px;
     text-align: center;
+     color:#ffffff;
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     border-radius: 60px;
+     right: 20px;
+     top: 170px;
+     /*box-shadow:0 0 15px #050413;*/
 }
 
  .method{
      background : #d5abaa;
-     height: 30px;
     text-align: center;
-
+     color:#ffffff;
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     border-radius: 60px;
+     right: 20px;
+     top: 240px;
+     /*box-shadow:0 0 15px #724a6f;*/
 }
 
  .data{
      background: #81a5a8;
-     height: 30px;
      text-align: center;
+     color:#ffffff;
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     border-radius: 60px;
+     right: 20px;
+     top: 310px;
+     /*box-shadow:0 0 15px #085750;*/
  }
  .technology{
      background : #756b87;
-     height: 30px;
     text-align: center;
-
+     color:#ffffff;
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     border-radius: 60px;
+     right: 20px;
+     top: 380px;
+     /*box-shadow:0 0 15px #452c52;*/
 }
 
  .show-all{
      background: #f6c675;
-     height: 30px;
      text-align: center;
-
+     color:#ffffff;
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     border-radius: 60px;
+     right: 20px;
+     top: 100px;
+     /*box-shadow:0 0 15px #937220;*/
  }
  .new-function{
      background: #888;
-     height: 30px;
      text-align: center;
+     color:#ffffff;
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     line-height: 60px;
+     border-radius: 60px;
+     right: 20px;
+     top: 450px;
+     /*box-shadow:0 0 15px #403e3e;*/
  }
 
  .circle :hover{
      margin-top: 10px;
  }
+.btn{
+margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.all{
+     background-color: #dddddd;
+ }
+
