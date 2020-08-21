@@ -4,7 +4,7 @@ See website on :https://odumbledorearmyo.github.io/Design-Study-Knowledge-Map
 It's a knowledge map about the field of design study. It will provide a quick inquiry by using Neo4j graph database. This project use d3.js to visualize the map on web page. 
 
 ### Data source
-The database is create by myself based on literature review. So basically it's a personal knowledge database. The database will keep updating.
+The database is create by myself based on literature review. So basically it's a personal knowledge database. The database is recorded as Cypher in the txt file. If you want to modify the data, copy the code in the txt file to Neo4j and the database will be created locally. Then modify them in Neo4j as you like. But remember to run the Match2D3.java again after modifying the data, so the map will change to show your database. The database will keep updating.
 
 ### Tech stack
 Neo4j(Cypher) + Java API + D3.js + HTML
