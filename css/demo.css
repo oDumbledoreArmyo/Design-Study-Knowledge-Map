@@ -62,10 +62,23 @@ width:100%;
     background: linear-gradient(0deg, #888 0%, #ccc 100%);
     text-decoration: none;
     border-radius: 60px;
-
-
+}
+.new-function2 :hover{
+    color: #fff;
+    background: linear-gradient(0deg, #888 0%, #ccc 100%);
+    text-decoration: none;
+    border-radius: 60px;
 }
 .filter-text :hover{
+    text-decoration: none;
+    background: #0b0b0b;
+    border-radius: 10px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.filter-text2 :hover{
     text-decoration: none;
     background: #0b0b0b;
     border-radius: 10px;
@@ -94,6 +107,27 @@ width:100%;
     transition: all 0.2s;
 
 }
+.filter-text2{
+    background: rgba(0,0,0,0.5);
+    height: 30px;
+    width: 90px;
+    position: fixed;
+    right: 120px;
+    top: 50px;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+
+}
+.filter-text2 h5{
+    font-size: 15px;
+    font-family: 方正粗雅宋简体;
+    color: #ffffff;
+    line-height: 30px;
+}
 .filter-text h5{
     font-size: 15px;
     font-family: 方正粗雅宋简体;
@@ -105,9 +139,19 @@ width:100%;
     background: rgba(250,250,250,0.5);
     position: fixed;
     width: 80px;
-    height: 440px;
+    height: 300px;
     border-radius: 60px;
     right: 15px;
+    top: 90px;
+    box-shadow:0 0 10px #686868;
+}
+.bkg2{
+    background: rgba(250,250,250,0.5);
+    position: fixed;
+    width: 80px;
+    height: 150px;
+    border-radius: 60px;
+    right: 125px;
     top: 90px;
     box-shadow:0 0 10px #686868;
 }
@@ -120,7 +164,7 @@ width:100%;
      height: 60px;
      border-radius: 60px;
      right: 25px;
-     top: 170px;
+     top: 100px;
      /*box-shadow:0 0 15px #050413;*/
      -webkit-transition: all 0.2s;
      -moz-transition: all 0.2s;
@@ -137,7 +181,7 @@ width:100%;
      height: 60px;
      border-radius: 60px;
      right: 25px;
-     top: 240px;
+     top: 170px;
      /*box-shadow:0 0 15px #724a6f;*/
 }
 
@@ -150,7 +194,7 @@ width:100%;
      height: 60px;
      border-radius: 60px;
      right: 25px;
-     top: 310px;
+     top: 240px;
      /*box-shadow:0 0 15px #085750;*/
  }
  .technology{
@@ -162,7 +206,7 @@ width:100%;
      height: 60px;
      border-radius: 60px;
      right: 25px;
-     top: 380px;
+     top: 310px;
      /*box-shadow:0 0 15px #452c52;*/
 }
 
@@ -174,8 +218,8 @@ width:100%;
      width: 60px;
      height: 60px;
      border-radius: 60px;
-     right: 25px;
-     top: 100px;
+     left: 25px;
+     top: 50px;
      /*box-shadow:0 0 15px #937220;*/
  }
  .new-function{
@@ -187,9 +231,49 @@ width:100%;
      height: 60px;
      line-height: 60px;
      border-radius: 60px;
-     right: 25px;
-     top: 450px;
+     right: 135px;
+     top: 100px;
      /*box-shadow:0 0 15px #403e3e;*/
+ }
+.new-function2{
+    background: #888;
+    text-align: center;
+    color:#ffffff;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 60px;
+    right: 135px;
+    top: 170px;
+    /*box-shadow:0 0 15px #403e3e;*/
+}
+.github{
+    position: fixed;
+    right: 25px;
+    bottom: 50px;
+    width: 58px;
+    height: 58px;
+    border-radius: 10px;
+    box-shadow:0 0 10px #171717;
+}
+.gq{
+    position: fixed;
+    right: 105px;
+    bottom: 50px;
+    width: 58px;
+    height: 58px;
+    border-radius: 10px;
+    box-shadow:0 0 10px #361455;
+}
+.yuque{
+     position: fixed;
+     right: 185px;
+     bottom: 50px;
+     width: 58px;
+     height: 58px;
+     border-radius: 10px;
+     box-shadow:0 0 10px #0c3d0f;
  }
 
  .circle :hover{
