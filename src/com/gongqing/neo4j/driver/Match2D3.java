@@ -7,7 +7,10 @@ import org.neo4j.driver.types.Path;
 import org.neo4j.driver.types.Relationship;
 
 import java.io.FileOutputStream;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 10/15.
@@ -24,17 +27,16 @@ public class Match2D3 {
 
 
     //界面传回操作请求，拼成Match语句查库，查库结果拼成json格式写json文件
-    public void gernerateJsonFile()
-    {
+    public void gernerateJsonFile() {
+        Set nodeSet = new HashSet();
         Session session = driver.session();
 
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result = session.run(
                 //!!!查库语句在这!!!
-             //"MATCH p=()-[]->() RETURN p"
+                //"MATCH p=()-[]->() RETURN p"
                 "match p= ()-[]->() return p"
-                    );
-
+        );
 
 
         StringBuffer nodes = new StringBuffer();
@@ -42,77 +44,83 @@ public class Match2D3 {
         nodes.append("\"nodes\":[");
         links.append("\"links\":[");
 
-        while (result.hasNext())
-        {
+        while (result.hasNext()) {
             Record record = result.next();
             System.out.println(record);
             List<Value> list = record.values();
-            for(Value v : list)
-            {
+            for (Value v : list) {
                 Path p = v.asPath();
-                for(Node n:p.nodes())
-                {
- //               System.out.println(n.labels());
-                    nodes.append("{");
- //                  System.out.println(n.size());
-                    int num = 0;
-                    for(String k:n.keys())
-                    {
-                      System.out.println(k+"-"+n.get(k));
-                      //怎么删除重复节点？
+                Iterator<Node> nodes2 = p.nodes().iterator();
+                while (nodes2.hasNext()) {
+                    Node node = nodes2.next();
+                    //在增加节点以前，先判断是否在集合中
+                    boolean isExist = nodeSet.contains(node.id());
+                    if (isExist) continue;
+                    Iterator<String> nodeKeys = node.keys().iterator();
 
-                        nodes.append("\""+k+"\":"+n.get(k)+",");
-                        num ++ ;
-                        if(num == n.size())
-                        {
-                            nodes.append("\"id\":"+n.id());
+                    for (Node n : p.nodes()) {
+                        //               System.out.println(n.labels());
+                        nodes.append("{");
+                        //                  System.out.println(n.size());
+                        int num = 0;
+                        for (String k : n.keys()) {
+                            System.out.println(k + "-" + n.get(k));
+                            //怎么删除重复节点？
+
+                            nodes.append("\"" + k + "\":" + n.get(k) + ",");
+                            num++;
+                            if (num == n.size()) {
+                                nodes.append("\"id\":" + n.id());
+                            }
+                            //将节点添加到set集合中
+                            nodeSet.add(node.id());
                         }
-                    }
 
-                    nodes.append("},");
+                        nodes.append("},");
+                    }
                 }
-                nodes=new StringBuffer(nodes.toString().substring(0,nodes.toString().length()-1));
+                    nodes = new StringBuffer(nodes.toString().substring(0, nodes.toString().length() - 1));
 //                System.out.println(p);
 
-                for(Relationship r:p.relationships())
-                {
+                    for (Relationship r : p.relationships()) {
 //                  System.out.println(n.labels());
-                    links.append("{");
-                    System.out.println(r);
-                    int num = 0;
-                    links.append("\"source\":"+r.startNodeId()+","+"\"target\":"+r.endNodeId());
-                    links.append(",\"type\":\""+r.type()+"\"");
-                    links.append("},");
-                }
-                links=new StringBuffer(links.toString().substring(0,links.toString().length()-1));
+                        links.append("{");
+                        System.out.println(r);
+                        int num = 0;
+                        links.append("\"source\":" + r.startNodeId() + "," + "\"target\":" + r.endNodeId());
+                        links.append(",\"type\":\"" + r.type() + "\"");
+                        links.append("},");
+                    }
+                    links = new StringBuffer(links.toString().substring(0, links.toString().length() - 1));
+
 
             }
-            nodes.append(",");
-            links.append(",");
+                nodes.append(",");
+                links.append(",");
 
-        }
-        nodes=new StringBuffer(nodes.toString().substring(0,nodes.toString().length()-1));
-        links=new StringBuffer(links.toString().substring(0,links.toString().length()-1));
+            }
 
-        nodes.append("]");
-        links.append("]");
-        System.out.println(nodes.toString());
-        System.out.println(links.toString());
-        String resultJson = "{"+nodes+","+links+"}";    //
-       System.out.println(resultJson);
+            nodes = new StringBuffer(nodes.toString().substring(0, nodes.toString().length() - 1));
+            links = new StringBuffer(links.toString().substring(0, links.toString().length() - 1));
+
+            nodes.append("]");
+            links.append("]");
+            System.out.println(nodes.toString());
+            System.out.println(links.toString());
+            String resultJson = "{" + nodes + "," + links + "}";    //
+            System.out.println(resultJson);
 //        System.out.println(nodes.toString());
 
 
-        try {
-            FileOutputStream fos = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon.json");
-            fos.write(resultJson.getBytes());
-            fos.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
+            try {
+                FileOutputStream fos = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon.json");
+                fos.write(resultJson.getBytes());
+                fos.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
+    }
 
 
 

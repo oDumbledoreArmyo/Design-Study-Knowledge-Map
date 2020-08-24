@@ -51,12 +51,7 @@ width:100%;
     text-decoration: none;
     border-radius: 60px;
 }
-.show-all :hover{
-    color: #fff;
-    background: linear-gradient(0deg, #f6c675 0%, #f7dfb7 100%);
-    text-decoration: none;
-    border-radius: 60px;
-}
+
 .new-function :hover{
     color: #fff;
     background: linear-gradient(0deg, #888 0%, #ccc 100%);
@@ -71,8 +66,18 @@ width:100%;
 }
 .filter-text :hover{
     text-decoration: none;
-    background: #0b0b0b;
+    /*background: #0b0b0b;*/
+    height: 30px;
+    width: 90px;
     border-radius: 10px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.show-all :hover{
+    width: 60px;
+    height: 60px;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
@@ -80,7 +85,9 @@ width:100%;
 }
 .filter-text2 :hover{
     text-decoration: none;
-    background: #0b0b0b;
+    /*background: #0b0b0b;*/
+    height: 30px;
+    width: 90px;
     border-radius: 10px;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -93,7 +100,7 @@ width:100%;
    box-shadow:0 0 8px #393939;
 }
 .filter-text{
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0);
     height: 30px;
     width: 90px;
     position: fixed;
@@ -108,7 +115,7 @@ width:100%;
 
 }
 .filter-text2{
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0);
     height: 30px;
     width: 90px;
     position: fixed;
@@ -134,7 +141,12 @@ width:100%;
     color: #ffffff;
     line-height: 30px;
 }
-
+.filter-text img{
+    width:60%;
+}
+.filter-text2 img{
+    width:60%;
+}
 .bkg{
     background: rgba(250,250,250,0.5);
     position: fixed;
@@ -211,7 +223,7 @@ width:100%;
 }
 
  .show-all{
-     background: #f6c675;
+     background: rgba(0,0,0,0);
      text-align: center;
      color:#ffffff;
      position: fixed;
@@ -288,3 +300,6 @@ margin-top: 10px;
      background-color: #dddddd;
  }
 
+.show-all img{
+    width:80%;
+}
