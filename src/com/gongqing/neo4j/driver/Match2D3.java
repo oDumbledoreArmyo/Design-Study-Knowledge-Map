@@ -35,7 +35,7 @@ public class Match2D3 {
         Result result = session.run(
                 //!!!查库语句在这!!!
                 //"MATCH p=()-[]->() RETURN p"
-                "match p= ()-[]->() return p"
+                "match p= ()-[]-() return p"
         );
 
 
@@ -57,43 +57,51 @@ public class Match2D3 {
                     boolean isExist = nodeSet.contains(node.id());
                     if (isExist) continue;
                     Iterator<String> nodeKeys = node.keys().iterator();
+                    nodes.append("{");
+                    //节点属性
+                    while (nodeKeys.hasNext()) {
+                        String nodeKey = nodeKeys.next();
+                        nodes.append("\"" + nodeKey + "\":");
+                        //node.get(nodeKey).toString();
+                        //System.out.println(node.get(nodeKey).asObject().toString());
+                        String content = node.get(nodeKey).asObject().toString();
+                        nodes.append("\"" + content + "\",");
+                    }
+                    nodes.append("\"id\":");
+                    nodes.append(node.id());
 
-                    for (Node n : p.nodes()) {
-                        //               System.out.println(n.labels());
-                        nodes.append("{");
-                        //                  System.out.println(n.size());
-                        int num = 0;
-                        for (String k : n.keys()) {
-                            System.out.println(k + "-" + n.get(k));
-                            //怎么删除重复节点？
+                    //添加节点类型！不知道为什么取得节点类型用的是labels，可能一个节点可以属于多个类别
+                    //但是我们这里只属于一个类别！
+                    Iterator<String> nodeTypes = node.labels().iterator();
+                    //得到节点类型了！
+                    String nodeType = nodeTypes.next();
 
-                            nodes.append("\"" + k + "\":" + n.get(k) + ",");
-                            num++;
-                            if (num == n.size()) {
-                                nodes.append("\"id\":" + n.id());
-                            }
-                            //将节点添加到set集合中
-                            nodeSet.add(node.id());
-                        }
+                    nodes.append(",");
+                    nodes.append("\"type\":");
+                    nodes.append("\"" + nodeType + "\"");
 
+                    //将节点添加到set集合中
+                    nodeSet.add(node.id());
+                    if (!nodes2.hasNext() && !result.hasNext()) {
+                        nodes.append("}");
+                    } else {
                         nodes.append("},");
                     }
+
                 }
-                    nodes = new StringBuffer(nodes.toString().substring(0, nodes.toString().length() - 1));
+                nodes = new StringBuffer(nodes.toString().substring(0, nodes.toString().length() - 1));
 //                System.out.println(p);
 
                     for (Relationship r : p.relationships()) {
 //                  System.out.println(n.labels());
                         links.append("{");
-                        System.out.println(r);
+                //        System.out.println(r);
                         int num = 0;
                         links.append("\"source\":" + r.startNodeId() + "," + "\"target\":" + r.endNodeId());
                         links.append(",\"type\":\"" + r.type() + "\"");
                         links.append("},");
                     }
                     links = new StringBuffer(links.toString().substring(0, links.toString().length() - 1));
-
-
             }
                 nodes.append(",");
                 links.append(",");

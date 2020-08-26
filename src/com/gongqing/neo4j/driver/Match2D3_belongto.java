@@ -7,7 +7,10 @@ import org.neo4j.driver.types.Path;
 import org.neo4j.driver.types.Relationship;
 
 import java.io.FileOutputStream;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 10/15.
@@ -26,6 +29,7 @@ public class Match2D3_belongto {
     //界面传回操作请求，拼成Match语句查库，查库结果拼成json格式写json文件
     public void gernerateJsonFile_belongto()
     {
+        Set nodeSet = new HashSet();
         Session session = driver.session();
 
         // Auto-commit transactions are a quick and easy way to wrap a read.
@@ -40,56 +44,70 @@ public class Match2D3_belongto {
         StringBuffer links_belongto = new StringBuffer();
         nodes_belongto.append("\"nodes_belongto\":[");
         links_belongto.append("\"links_belongto\":[");
-
-        while (result_belongto.hasNext())
-        {
-            Record record_belongto = result_belongto.next();
-            System.out.println(record_belongto);
-            List<Value> list = record_belongto.values();
-            for(Value v : list)
-            {
+        while (result_belongto.hasNext()) {
+            Record record = result_belongto.next();
+            System.out.println(record);
+            List<Value> list = record.values();
+            for (Value v : list) {
                 Path p = v.asPath();
-                for(Node n:p.nodes())
-                {
- //               System.out.println(n.labels());
+                Iterator<Node> nodes2 = p.nodes().iterator();
+                while (nodes2.hasNext()) {
+                    Node node = nodes2.next();
+                    //在增加节点以前，先判断是否在集合中
+                    boolean isExist = nodeSet.contains(node.id());
+                    if (isExist) continue;
+                    Iterator<String> nodeKeys = node.keys().iterator();
                     nodes_belongto.append("{");
- //                  System.out.println(n.size());
-                    int num = 0;
-                    for(String k:n.keys())
-                    {
-                      System.out.println(k+"-"+n.get(k));
-                      //怎么删除重复节点？
+                    //节点属性
+                    while (nodeKeys.hasNext()) {
+                        String nodeKey = nodeKeys.next();
+                        nodes_belongto.append("\"" + nodeKey + "\":");
+                        //node.get(nodeKey).toString();
+                        //System.out.println(node.get(nodeKey).asObject().toString());
+                        String content = node.get(nodeKey).asObject().toString();
+                        nodes_belongto.append("\"" + content + "\",");
+                    }
+                    nodes_belongto.append("\"id\":");
+                    nodes_belongto.append(node.id());
 
-                        nodes_belongto.append("\""+k+"\":"+n.get(k)+",");
-                        num ++ ;
-                        if(num == n.size())
-                        {
-                            nodes_belongto.append("\"id\":"+n.id());
-                        }
+                    //添加节点类型！不知道为什么取得节点类型用的是labels，可能一个节点可以属于多个类别
+                    //但是我们这里只属于一个类别！
+                    Iterator<String> nodeTypes = node.labels().iterator();
+                    //得到节点类型了！
+                    String nodeType = nodeTypes.next();
+
+                    nodes_belongto.append(",");
+                    nodes_belongto.append("\"type\":");
+                    nodes_belongto.append("\"" + nodeType + "\"");
+
+                    //将节点添加到set集合中
+                    nodeSet.add(node.id());
+                    if (!nodes2.hasNext() && !result_belongto.hasNext()) {
+                        nodes_belongto.append("}");
+                    } else {
+                        nodes_belongto.append("},");
                     }
 
-                    nodes_belongto.append("},");
                 }
-                nodes_belongto=new StringBuffer(nodes_belongto.toString().substring(0,nodes_belongto.toString().length()-1));
+                nodes_belongto = new StringBuffer(nodes_belongto.toString().substring(0, nodes_belongto.toString().length() - 1));
 //                System.out.println(p);
 
-                for(Relationship r:p.relationships())
-                {
+                for (Relationship r : p.relationships()) {
 //                  System.out.println(n.labels());
                     links_belongto.append("{");
-                    System.out.println(r);
+                    //        System.out.println(r);
                     int num = 0;
-                    links_belongto.append("\"source\":"+r.startNodeId()+","+"\"target\":"+r.endNodeId());
-                    links_belongto.append(",\"type\":\""+r.type()+"\"");
+                    links_belongto.append("\"source\":" + r.startNodeId() + "," + "\"target\":" + r.endNodeId());
+                    links_belongto.append(",\"type\":\"" + r.type() + "\"");
                     links_belongto.append("},");
                 }
-                links_belongto=new StringBuffer(links_belongto.toString().substring(0,links_belongto.toString().length()-1));
-
+                links_belongto = new StringBuffer(links_belongto.toString().substring(0, links_belongto.toString().length() - 1));
             }
             nodes_belongto.append(",");
             links_belongto.append(",");
 
         }
+
         nodes_belongto=new StringBuffer(nodes_belongto.toString().substring(0,nodes_belongto.toString().length()-1));
         links_belongto=new StringBuffer(links_belongto.toString().substring(0,links_belongto.toString().length()-1));
 
