@@ -154,14 +154,15 @@ Match (n:Field) set n.nodecolor='icon1.png' return n;
 Match (n:Method) set n.nodecolor='icon2.png' return n;
 Match (n:Data) set n.nodecolor='icon3.png' return n;
 Match (n:Technology) set n.nodecolor='icon4.png' return n;
-
+Match (n:Field{name:'文化设计'}) set n.nodecolor='icon1_link.png' return n;
+Match (n:Field{name:'旅游设计'}) set n.nodecolor='icon1_link.png' return n;
 
 Match (n)-[:从属]->(f) Merge (n)<-[:从属]-(f) ;
 Match (n)-[:使用]->(f) Merge (n)<-[:使用]-(f) ;
 
 
-Match(n:Field{name:'文化设计'}) set n.link = 'https://www.yuque.com/iskwvf/exzb31/cultural' return n ; 
-Match(n:Field{name:'旅游设计'}) set n.link = 'https://www.yuque.com/iskwvf/exzb31/tourism' return n ; 
+Match(n:Field{name:'文化设计'}) set n.link = 'https://https://www.yuque.com/gongqing-brv7z/qnls/tgfxys' return n ; 
+Match(n:Field{name:'旅游设计'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/qnls/tarxlf' return n ; 
 
 
 
