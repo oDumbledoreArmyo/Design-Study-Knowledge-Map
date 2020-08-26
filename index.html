@@ -92,7 +92,6 @@
                     // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
                     .alphaDecay(this.config.alphaDecay)
 
-
                 //设置箭头属性
                 this.vis.append("svg:defs").selectAll("marker")
                         .data(["end"])
@@ -128,7 +127,6 @@
                     console.info(d3.event.subject)
                     _this.force.stop();
                     d3.event.sourceEvent.stopPropagation();
-
                 };
 
                 var dragmove=function(d, i) {
@@ -228,8 +226,6 @@
                         .attr("y", "-35px")
                         .attr("width", "70px")
                         .attr("height", "70px");
-
-
 
                //节点下方文字
                 this.node.append("svg:text")
