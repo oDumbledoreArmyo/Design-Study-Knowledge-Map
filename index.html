@@ -85,7 +85,7 @@
                        .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
                        .force("charge",d3.forceManyBody())
-                        .force("collide",d3.forceCollide(50).strength(0.5).iterations(7))
+                        .force("collide",d3.forceCollide(60).strength(0.2).iterations(7))
                     // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
                     .alphaDecay(this.config.alphaDecay)
 
@@ -119,7 +119,7 @@
                         .attr('stroke','#bbb');
 
                 var dragstart=function(d, i) {
-                    if (!d3.event.active) _that.simulation.alphaTarget(0.003).restart();
+                    if (!d3.event.active) _that.simulation.alphaTarget(0).restart();
                     d3.event.subject.fx = d.x;
                     d3.event.subject.fy = d.y;
                     console.info(d3.event.subject)
@@ -214,7 +214,10 @@
                         });
 
                    //定义图片
-                this.node.append("svg:image")
+                this.node .append("a")
+                    .attr("xlink:href", function(d){return d.link})
+                    .attr("target","_blank")
+                    .append("svg:image")
                         .attr("class", "circle")
  //                     .attr("xlink:href", "images/icon.png")
                  .attr("xlink:href", function(d){return "images/"+d.nodecolor})
@@ -222,16 +225,17 @@
                         .attr("y", "-35px")
                         .attr("width", "70px")
                         .attr("height", "70px");
+
+
+
                //节点下方文字
                 this.node.append("svg:text")
                         .attr("class", "nodetext")
-
                         .attr("dy", "5px")
                         .attr("dx", "0px")
                         .attr("style","font-size:12px;fill:#fff;font-family:方正粗雅宋简体")
                         .attr('text-anchor','middle')
                     .text(function(d) { return d.name });
-
 
                //边上的文字
                 this.linetext=this.vis.selectAll('.linetext')

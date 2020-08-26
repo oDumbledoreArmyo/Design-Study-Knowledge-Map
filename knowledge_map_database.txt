@@ -160,6 +160,11 @@ Match (n)-[:从属]->(f) Merge (n)<-[:从属]-(f) ;
 Match (n)-[:使用]->(f) Merge (n)<-[:使用]-(f) ;
 
 
+Match(n:Field{name:'文化设计'}) set n.link = 'https://www.yuque.com/iskwvf/exzb31/cultural' return n ; 
+Match(n:Field{name:'旅游设计'}) set n.link = 'https://www.yuque.com/iskwvf/exzb31/tourism' return n ; 
+
+
+
 https://odumbledorearmyo.github.io/Design-Study-Knowledge-Map/.
 
 
