@@ -211,7 +211,10 @@
                         });
 
                    //定义图片
-                this.node.append("svg:image")
+                this.node .append("a")
+                    .attr("xlink:href", function(d){return d.link})
+                    .attr("target","_blank")
+                    .append("svg:image")
                         .attr("class", "circle")
  //                     .attr("xlink:href", "images/icon.png")
                   .attr("xlink:href", function(d){return "images/"+d.nodecolor})
