@@ -10,7 +10,7 @@ The database is create by myself based on literature review. So basically it's a
 Neo4j(Cypher) + Java API + D3.js + HTML
 
 ### Future work
-(1) Fix the problem — the duplicate nodes remains visible.  
+(1) Fix the problem — the duplicate nodes remains visible.  (Done!)
 
 (2) Provide an English version.
 
