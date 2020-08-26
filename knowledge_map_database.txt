@@ -60,6 +60,7 @@ Merge (n59:Data  {name:"脑电数据"})
 Merge (n60:Data  {name:"皮电数据"})
 Merge (n61:Data  {name:"主观数据"})
 
+//下面和上面分开两次运行
 Match (n1:Field {name:"旅游设计"}) , (n24:Field {name:"旅游产品"}) merge (n1)<-[:从属]-(n24) ;
 Match (n:Field {name:"旅游设计"}) , (m:Field {name:"游客行为"}) merge (n)<-[:从属]-(m) ;
 Match (n:Field {name:"服务设计"}) , (m:Field {name:"旅游设计"}) merge (n)<-[:从属]-(m) ;
