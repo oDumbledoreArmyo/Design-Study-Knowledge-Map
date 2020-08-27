@@ -303,3 +303,28 @@ margin-top: 10px;
 .show-all img{
     width:80%;
 }
+
+.fm{
+    position: fixed;
+    right: 400px;
+    top: 50px;
+}
+.s_btn{
+    height: 40px;
+    width: 80px;
+    border-radius: 40px;
+    background: rgb(237, 192, 115, 0.8);
+    border: #ffffff;
+    outline: none;
+}
+.s_ipt{
+    background: rgba(255, 246, 246, 0.5);
+    height: 40px;
+    width: 200px;
+    border-radius: 40px;
+    border: #ffffff;
+    outline: none;
+    color: #c4c4c4;
+    padding-left: 20px;
+    margin-right: 15px;
+}
