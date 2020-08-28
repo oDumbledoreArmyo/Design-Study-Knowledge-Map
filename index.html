@@ -274,6 +274,7 @@
             });
         });
     </script>
+
          <div class="container1 banner-area">
              <div class="top-text">
                  <h5>Authored by: GongQing // TECH STACK: NEO4J(CYPHER) + Java API + D3.JS + HTML</h5>
@@ -324,12 +325,12 @@
                      </div>
                      <div class="top-notes new-function ">
                          <a href="belongto.html">
-                             <h5 class="">—从属—></h5>
+                             <h5 class="">从属</h5>
                          </a>
                      </div>
                      <div class="top-notes new-function2 ">
                          <a href="usedto.html">
-                             <h5 class="">—使用—></h5>
+                             <h5 class="">使用</h5>
                          </a>
                      </div>
                  </div>
@@ -351,16 +352,26 @@
                  </a>
              </div>
          </div>
+
          <form class="fm">
              <span>
-                 <input type="text" value="暂不可用" class="s_ipt">
+                 <input type="text" id="claa" placeholder="不要点查询" class="s_ipt">
              </span>
              <span>
-                 <input type="submit" value="查询" class="self-btn s_btn">
+<!--                 <input type="submit" value="别点" class="self-btn s_btn"  onclick="myFunction()">-->
+                <button  class="s_btn" type="button" onclick="myFunction()">查询</button>
              </span>
          </form>
 
+         <script>
+             function myFunction() {
+                 x=document.getElementById("claa");
+                 x.placeholder="？都叫你别点了";
+             }
+         </script>
 
+
+         <script src="js/jquery.js"></script>
          <script src="js/vendor/jquery-2.2.4.min.js"></script>
          <script src="js/vendor/bootstrap.min.js"></script>
          <script src="js/popper.min.js"></script>
