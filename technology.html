@@ -71,7 +71,7 @@
                 this.vis = d3.select("body").append("svg:svg")
                         .attr("width", "100%")
                         .attr("height", defaultConfig.height)
-                         .attr("style","background:#dddddd;")
+                         .attr("style","background:#191814;")
                         .call(zoom).on("dblclick.zoom", null);
 
                 this.vis=this.vis.append('g').attr('class','all')
@@ -87,7 +87,7 @@
                         .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
                         .force("charge",d3.forceManyBody())
-                        .force("collide",d3.forceCollide(60).strength(0.2).iterations(7))
+                        .force("collide",d3.forceCollide(30).strength(0.2).iterations(7))
                     // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
                     .alphaDecay(this.config.alphaDecay)
                 //设置箭头属性
@@ -221,16 +221,16 @@
                         .attr("class", "circle")
  //                     .attr("xlink:href", "images/icon.png")
                   .attr("xlink:href", function(d){return "images/"+d.nodecolor})
-                        .attr("x", "-35px")
-                        .attr("y", "-35px")
-                        .attr("width", "70px")
-                        .attr("height", "70px");
+                    .attr("x", "-25px")
+                    .attr("y", "-25px")
+                    .attr("width", "50px")
+                    .attr("height", "50px");
                //节点下方文字
                 this.node.append("svg:text")
                         .attr("class", "nodetext")
                         .attr("dy", "5px")
                         .attr("dx", "0px")
-                        .attr("style","font-size:10px;fill:#fff;font-family:方正粗雅宋简体")
+                    .attr("style","font-size:7px;fill:#191814;font-family:方正粗雅宋简体")
                         .attr('text-anchor','middle')
                         .text(function(d) { return d.name });
 
@@ -240,7 +240,7 @@
                         .enter()
                         .append("text")
                         .attr("class", "linetext")
-                    .attr("style","font-size:10px;fill:#999;")
+                    .attr("style","font-size:10px;fill:#5e564d;font-family:微软雅黑")
                  //   .attr("style","fill:#111;")
                         .attr("x",function(d){ return (d.source.x + d.target.x) / 2})
                         .attr("y",function(d){ return (d.source.y + d.target.y) / 2})
@@ -271,83 +271,142 @@
             });
         });
     </script>
-         <div class="container1 banner-area">
-             <div class="top-text">
-                 <h5>Authored by: GongQing // TECH STACK: NEO4J(CYPHER) + Java API + D3.JS + HTML</h5>
+         <div class="container1 row banner-area ">
+             <div class = "col-2 left-box">
+                 <h5>Showing XXX of XXX </h5>
              </div>
+             <div class="top-text col-10">
 
+             </div>
              <div class="top-notes show-all">
                  <a href="index.html">
-                     <img src="images/showall.png" alt="">
-                 </a>
-             </div>
-             <div class="row" id="container2">
-                 <div class="filter-text" id="myCollapsibleExample"><a href="#demo" data-toggle="collapse">
-                     <img src="images/label.png" alt="">
-                 </a></div>
-                 <div id="demo" class="collapse">
-                     <div class="bkg">
-
-                     </div>
-                     <div class="top-notes field">
-                         <a href="field.html">
-                             <h5 class="">领域</h5>
-                         </a>
-                     </div>
-                     <div class="top-notes method">
-                         <a href="method.html">
-                             <h5 class="">方法</h5>
-                         </a>
-                     </div>
-                     <div class="top-notes data">
-                         <a href="data.html">
-                             <h5 class="">数据 </h5>
-                         </a>
-                     </div>
-                     <div class="top-notes technology chosen-btn">
-                         <a href="technology.html">
-                             <h5 class="">技术</h5>
-                         </a>
-                     </div>
-                 </div>
-             </div>
-             <div class="row">
-                 <div class="filter-text2" id="myCollapsibleExample2"><a href="#demo2" data-toggle="collapse">
-                     <img src="images/relationship.png" alt="">
-                 </a></div>
-                 <div id="demo2" class="collapse">
-                     <div class="bkg2">
-
-                     </div>
-                     <div class="top-notes new-function ">
-                         <a href="belongto.html">
-                             <h5 class="">—从属—></h5>
-                         </a>
-                     </div>
-                     <div class="top-notes new-function2 ">
-                         <a href="usedto.html">
-                             <h5 class="">—使用—></h5>
-                         </a>
-                     </div>
-                 </div>
-
-             </div>
-             <div class="top-notes yuque">
-                 <a href="https://www.yuque.com/gongqing-brv7z/qnls" target="_blank">
-                     <img src="images/yuque.png" alt="">
-                 </a>
-             </div>
-             <div class="top-notes gq">
-                 <a href="http://gqtrashbin.xyz/" target="_blank">
-                     <img src="images/gq.png" alt="">
-                 </a>
-             </div>
-             <div class="top-notes github">
-                 <a href="https://github.com/oDumbledoreArmyo/Design-Study-Knowledge-Map" target="_blank">
-                     <img src="images/github.png" alt="">
+                     <p>显示全部</p>
                  </a>
              </div>
          </div>
+         <div class="leftbox">
+
+
+             <div class = "filter-text">
+                 <p>标签</p>
+             </div>
+             <div class="top-notes field">
+
+                 <a href="field.html">
+                     <h5 class="">领域</h5>
+                 </a>
+
+             </div>
+             <div class="top-notes method">
+                 <a href="method.html">
+                     <h5 class="">方法</h5>
+                 </a>
+             </div>
+             <div class="top-notes data">
+                 <a href="data.html">
+                     <h5 class="">数据 </h5>
+                 </a>
+             </div>
+             <div class="top-notes technology">
+                 <div class="chosen-btn">
+                 <a href="technology.html">
+                     <h5 class="">技术</h5>
+                 </a>
+                 </div>
+             </div>
+             <div class = "filter-text2">
+                 <p>关系</p>
+             </div>
+             <div class="top-notes new-function ">
+
+                     <a href="belongto.html">
+                         <h5 class="">从属</h5>
+                     </a>
+
+             </div>
+             <div class="top-notes new-function2 ">
+                 <a href="usedto.html">
+                     <h5 class="">使用</h5>
+                 </a>
+             </div>
+         </div>
+         <div class="info">
+             <h5>Authored by: GongQing // TECH STACK: NEO4J(CYPHER) + Java API + D3.JS + HTML</h5>
+         </div>
+         <!--             <div class="row" id="container2">-->
+
+         <!--                 <div class="filter-text" id="myCollapsibleExample"><a href="#demo" data-toggle="collapse">-->
+         <!--                     <img src="images/label.png" alt="">-->
+         <!--                 </a></div>-->
+         <!--                 <div id="demo" class="collapse">-->
+         <!--                 <div class="bkg">-->
+
+         <!--                 </div>-->
+
+         <!--                 </div>-->
+
+         <!--             </div>-->
+         <!--             <div class="row">-->
+         <!--                 <div class="filter-text2" id="myCollapsibleExample2"><a href="#demo2" data-toggle="collapse">-->
+         <!--                     <img src="images/relationship.png" alt="">-->
+         <!--                 </a></div>-->
+         <!--                 <div id="demo2" class="collapse">-->
+         <!--                     <div class="bkg2">-->
+
+         <!--                     </div>-->
+
+         <!--                 </div>-->
+
+         <!--             </div>-->
+         <div class="top-notes yuque">
+             <a href="https://www.yuque.com/gongqing-brv7z/qnls" target="_blank">
+                 <img src="images/yuque.png" alt="">
+             </a>
+         </div>
+         <div class="top-notes gq">
+             <a href="http://gqtrashbin.xyz/" target="_blank">
+                 <img src="images/gq.png" alt="">
+             </a>
+         </div>
+         <div class="top-notes github">
+             <a href="https://github.com/oDumbledoreArmyo/Design-Study-Knowledge-Map" target="_blank">
+                 <img src="images/github.png" alt="">
+             </a>
+         </div>
+         </div>
+         <div class="tip">
+             <div class="tip-title"><p>注释</p>  </div>
+
+             <img src="images/icon1.png" alt="">
+             <div class="tip-1"><p>领域(Filed)</p></div>
+             <img src="images/icon2.png" alt="">
+             <div class="tip-2"><p>方法(Method)</p></div>
+             <img src="images/icon3.png" alt="">
+             <div class="tip-3"><p>数据(Data)</p></div>
+             <img src="images/icon4.png" alt="">
+             <div class="tip-4"><p>技术(Technology)</p></div>
+
+         </div>
+         <form class="fm">
+             <span>
+                 <input type="text" id="claa" placeholder="不要点查询" class="s_ipt">
+             </span>
+             <span>
+<!--                 <input type="submit" value="别点" class="self-btn s_btn"  onclick="myFunction()">-->
+                <button  class="s_btn" type="button" onclick="myFunction()">
+                    <p>查询</p>
+
+                </button>
+             </span>
+         </form>
+
+         <script>
+             function myFunction() {
+                 x=document.getElementById("claa");
+                 x.placeholder="？都叫你别点了";
+             }
+         </script>
+
 
          <script src="js/vendor/jquery-2.2.4.min.js"></script>
          <script src="js/vendor/bootstrap.min.js"></script>
