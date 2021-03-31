@@ -121,7 +121,9 @@ public class Match2D3_method {
 
 
         try {
-            FileOutputStream fos_method = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_method.json");
+            FileOutputStream fos_method = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_method.json");
+
+          //  FileOutputStream fos_method = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_method.json");
             fos_method.write(resultJson_method.getBytes());
             fos_method.close();
             fos_method.flush();

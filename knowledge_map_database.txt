@@ -51,7 +51,7 @@ Merge (n50:Data  {name:"蓝牙数据"})
 Merge (n51:Data  {name:"在线文本数据"})
 Merge (n52:Field  {name:"网页设计"})
 Merge (n53:Field  {name:"实体产品设计"})
-Merge(n54:Technology  {name:"计算机图形学"}) 
+Merge (n54:Technology  {name:"计算机图形学"}) 
 Merge (n55:Field  {name:"博物馆展示设计"})
 Merge (n56:Technology  {name:"网络技术"})
 Merge (n57:Data  {name:"小数据"})
@@ -59,14 +59,70 @@ Merge (n58:Technology  {name:"计算机仿真技术"})
 Merge (n59:Data  {name:"脑电数据"})
 Merge (n60:Data  {name:"皮电数据"})
 Merge (n61:Data  {name:"主观数据"})
+//2021-03-30
+Merge (n62: Field {name:"生成式设计"})
+Merge (n63: Field {name:"建筑设计"})
+Merge (n64: Method {name:"形状文法"})
+Merge (n65: Method {name:"遗传算法"})
+Merge (n66: Method {name:"L-system"})
+Merge (n67: Method {name:"集群智能"})
+Merge (n68: Method {name:"参数化建模"})
+Merge (n69: Method {name:"产品设计构成法"})
+Merge (n70: Field {name:"文化心理学"})
+Merge (n71: Method {name:"混沌理论"})
+Merge (n72: Method {name:"文创产品构成原则"})
+Merge (n73: Method {name:"文化心理学四要素"})
+Merge (n74: Field {name:"商业设计"})
+Merge (n75: Method {name:"KANO模型"})
+Merge (n76: Field {name:"情感设计"})
+Merge (n77: Method {name:"Norman情感设计三元素"})
+Merge (n78: Field {name:"人格科学"})
+Merge (n79: Method {name:"人格五因模式"})
+Merge (n80: Method {name:"文化元素提取"})
+Merge (n81: Method {name:"聚类分析法"})
+Merge (n82: Method {name:"层次分析法"})
+Merge (n83: Method {name:"文化产品的三层次"})
 
-//下面和上面分开两次运行
+
+//先运行上面的再运行下面的
+//2021-03-30
+Match (n:Field {name:"生成式设计"}) , (m:Field {name:"文化产品设计"}) merge (n)<-[:从属]-(m) ;
+Match (n:Field {name:"生成式设计"}) , (m:Field {name:"建筑设计"}) merge (n)<-[:从属]-(m) ;
+Match (n: Field {name:"生成式设计"}) , (m: Method {name:"形状文法"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"生成式设计"}) , (m: Method {name:"遗传算法"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"生成式设计"}) , (m: Method {name:"L-system"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"生成式设计"}) , (m: Method {name:"集群智能"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"生成式设计"}) , (m: Method {name:"参数化建模"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"产品设计构成法"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"文化心理学四要素"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"混沌理论"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"文创产品构成原则"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"文化元素提取"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"文化产品的三层次"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"人格五因模式"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"Norman情感设计三元素"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"文化产品设计"}) , (m: Method {name:"KANO模型"}) merge (n)-[:使用]->(m) ;
+
+Match (n: Method {name:"文化元素提取"}) , (m: Method {name:"聚类分析法"}) merge (n)-[:使用]->(m) ;
+Match (n: Method {name:"文化元素提取"}) , (m: Method {name:"层次分析法"}) merge (n)-[:使用]->(m) ;
+
+Match (n: Field {name:"文化心理学"}) , (m: Method {name:"文化心理学四要素"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"商业设计"}) , (m: Method {name:"KANO模型"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"情感设计"}) , (m: Method {name:"Norman情感设计三元素"}) merge (n)-[:使用]->(m) ;
+Match (n: Field {name:"人格科学"}) , (m: Method {name:"人格五因模式"}) merge (n)-[:使用]->(m) ;
+
+Match (n: Method {name:"聚类分析法"}) , (m: Method {name:"主观数据挖掘分析"}) merge (n)<-[:从属]-(m) ;
+Match (n: Method {name:"层次分析法"}) , (m: Method {name:"主观数据挖掘分析"}) merge (n)<-[:从属]-(m) ;
+
+
+
+//2021-03-30之前的
 Match (n1:Field {name:"旅游设计"}) , (n24:Field {name:"旅游产品"}) merge (n1)<-[:从属]-(n24) ;
 Match (n:Field {name:"旅游设计"}) , (m:Field {name:"游客行为"}) merge (n)<-[:从属]-(m) ;
 Match (n:Field {name:"服务设计"}) , (m:Field {name:"旅游设计"}) merge (n)<-[:从属]-(m) ;
 Match (n:Field {name:"旅游设计"}) , (m:Field {name:"游客行为"}) merge (n)<-[:从属]-(m) ;
 Match (n:Field {name:"文化设计"}) , (m:Field {name:"旅游设计"}) merge (n)<-[:从属]-(m) ;
-Match (n:Field {name:"文化设计"}) , (m:Field {name:"博物馆展示设计"}) merge (n)<-[:从属]-(m) ;
+Match (n:Field {name:"文化设计"}) , (m:Field {name:"博物馆展示设计"}) merge (n)<-[:从属]-(m) ; 
 Match (n:Field {name:"旅游项目"}) , (m:Field {name:"博物馆展示设计"}) merge (n)<-[:从属]-(m) ;
 Match (n:Field {name:"文化设计"}) , (m:Field {name:"文化产品设计"}) merge (n)<-[:从属]-(m) ;
 Match (n:Field {name:"文化设计"}) , (m:Field {name:"非物质文化遗产"}) merge (n)<-[:从属]-(m) ;
@@ -165,6 +221,8 @@ Match (n)-[:使用]->(f) Merge (n)<-[:使用]-(f) ;
 Match(n:Field{name:'文化设计'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/qnls/tgfxys' return n ; 
 Match(n:Field{name:'旅游设计'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/qnls/tarxlf' return n ; 
 Match(n:Field{name:'虚拟展示'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/qnls/cm967s' return n ;
+
+
 
 
 

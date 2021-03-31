@@ -19,26 +19,26 @@ import java.util.Set;
 public class Match2D3_field {
 
     Driver driver;
+    String Lable;
 
     public Match2D3_field(String uri, String user, String password)
     {
         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
     }
 
-
     //界面传回操作请求，拼成Match语句查库，查库结果拼成json格式写json文件
     public void gernerateJsonFile_field()
     {
         Set nodeSet = new HashSet();
         Session session = driver.session();
+        Lable = "Field";
 
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result_field = session.run(
-                //!!!查库语句在这!!!
-             "MATCH p = (:Field)-[]->(:Field) RETURN p"
+        //!!!查库语句在这!!!
+        "MATCH p= (:" + Lable + ")-[*1..2]->(:" + Lable + ") RETURN p"
+        // "MATCH p = (:Field)-[]->(:Field) RETURN p"
                     );
-
-
 
         StringBuffer nodes_field = new StringBuffer();
         StringBuffer links_field = new StringBuffer();
@@ -121,7 +121,9 @@ public class Match2D3_field {
 
 
         try {
-            FileOutputStream fos_field = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_field.json");
+            FileOutputStream fos_field = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_field.json");
+
+           // FileOutputStream fos_field = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_field.json");
             fos_field.write(resultJson_field.getBytes());
             fos_field.close();
             fos_field.flush();

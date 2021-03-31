@@ -121,7 +121,9 @@ public class Match2D3_belongto {
 
 
         try {
-            FileOutputStream fos_belongto = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_belongto.json");
+            FileOutputStream fos_belongto = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_belongto.json");
+
+           // FileOutputStream fos_belongto = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_belongto.json");
             fos_belongto.write(resultJson_belongto.getBytes());
             fos_belongto.close();
             fos_belongto.flush();
