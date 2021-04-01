@@ -121,11 +121,11 @@ public class Match2D3_data {
 
 
         try {
-      //      FileOutputStream fos_data = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_data.json");
+
             //windows的路径
-            // FileOutputStream fos = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon.json");
+            FileOutputStream fos_data = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_data.json");
             //mac的路径
-            FileOutputStream fos_data = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_data.json");
+           // FileOutputStream fos_data = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_data.json");
             fos_data.write(resultJson_data.getBytes());
             fos_data.close();
             fos_data.flush();

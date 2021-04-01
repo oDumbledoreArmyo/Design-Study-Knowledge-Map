@@ -121,9 +121,9 @@ public class Match2D3_technology {
 
 
         try {
-            FileOutputStream fos_technology = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_technology.json");
+        //    FileOutputStream fos_technology = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_technology.json");
 
-       //     FileOutputStream fos_technology = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_technology.json");
+            FileOutputStream fos_technology = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_technology.json");
             fos_technology.write(resultJson_technology.getBytes());
             fos_technology.close();
             fos_technology.flush();

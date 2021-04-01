@@ -121,9 +121,9 @@ public class Match2D3_usedto {
 
 
         try {
-            FileOutputStream fos_usedto = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_usedto.json");
+        //    FileOutputStream fos_usedto = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_usedto.json");
 
-         //   FileOutputStream fos_usedto = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_usedto.json");
+            FileOutputStream fos_usedto = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_usedto.json");
             fos_usedto.write(resultJson_usedto.getBytes());
             fos_usedto.close();
             fos_usedto.flush();

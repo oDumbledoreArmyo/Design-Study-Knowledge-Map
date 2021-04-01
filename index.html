@@ -72,7 +72,7 @@
                 this.vis = d3.select("body").append("svg:svg")
                         .attr("width", "100%")
                         .attr("height", defaultConfig.height)
-                    .attr("style","background:#191814;")
+                        .attr("style","background:#191814;")
                         .call(zoom).on("dblclick.zoom", null);
 
                 this.vis=this.vis.append('g').attr('class','all')
@@ -85,9 +85,9 @@
                 this.force = d3.forceSimulation()
                         .nodes(defaultConfig.data.nodes)
                         .force("link", d3.forceLink(defaultConfig.data.links).distance(defaultConfig.distance))
-                       .force("charge", d3.forceManyBody())
+                        .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
-                       .force("charge",d3.forceManyBody())
+                        .force("charge",d3.forceManyBody())
                         .force("collide",d3.forceCollide(30).strength(0.2).iterations(7))
                     // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
                     .alphaDecay(this.config.alphaDecay)

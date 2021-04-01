@@ -121,9 +121,9 @@ public class Match2D3_search{
 
 
         try {
-            FileOutputStream fos_search = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_search.json");
+           // FileOutputStream fos_search = new FileOutputStream("/Users/gongqing/Desktop/勇攀学术高峰/输出/Design-study-knowledge-map/Neo4jSon_search.json");
 
-            // FileOutputStream fos_search = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_search.json");
+             FileOutputStream fos_search = new FileOutputStream("E:\\勇攀学术高峰\\输出\\Design-study-knowledge-map\\Neo4jSon_search.json");
             fos_search.write(resultJson_search.getBytes());
             fos_search.close();
             fos_search.flush();
