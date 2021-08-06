@@ -19,17 +19,19 @@ import java.util.Set;
 public class Match2D3 {
 
     Driver driver;
+    Session session;
 
     public Match2D3(String uri, String user, String password)
     {
         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
+       session = driver.session();
     }
 
 
     //界面传回操作请求，拼成Match语句查库，查库结果拼成json格式写json文件
     public void gernerateJsonFile() {
         Set nodeSet = new HashSet();
-        Session session = driver.session();
+
 
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result = session.run(
