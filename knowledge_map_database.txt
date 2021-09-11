@@ -1,3 +1,5 @@
+match (n) detach delete n
+
 Merge (n1:Field {name:"旅游设计",egname:"Tourism design"})
 Merge (n2:Field {name:"游客动态",egname:"Tourists movement"})
 Merge (n3:Data {name:"用户数据",egname:"Users' data"})
@@ -83,9 +85,34 @@ Merge (n81: Method {name:"聚类分析法",egname:"Cluster analysis"})
 Merge (n82: Method {name:"层次分析法",egname:"Analytic Hierarchy Process"})
 Merge (n83: Method {name:"文化产品的三层次",egname:"Three levels"})
 
+//2021-09-11
+Merge (n84: Field{name:"虚拟代理",egname:"Virtual agent"})
+Merge (n85: Field{name:"CG视觉艺术",egname:"CG"})
+Merge (n86: Field{name:"DD干预训练",egname:"DD"})
+Merge (n87: Field{name:"汉字",egname:"Chinese Characters"})
+Merge (n88: Field{name:"书写",egname:"Writing"})
+Merge (n89: Field{name:"空间与数学",egname:"Maths"})
+Merge (n90: Field{name:"童机交互",egname:"CCI"})
 
 
 //先运行上面的再运行下面的
+//2021-09-11
+Match (n: Field {name:"DD干预训练"}) , (m: Data {name:"行为数据"}) merge (n)-[:使用]->(m) ;
+
+
+Match (n: Field {name:"童机交互"}) , (m: Field {name:"人机交互"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"DD干预训练"}) , (m: Field {name:"童机交互"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"DD干预训练"}) , (m: Field {name:"注意力"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"DD干预训练"}) , (m: Field {name:"汉字"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"DD干预训练"}) , (m: Field {name:"书写"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"DD干预训练"}) , (m: Field {name:"空间与数学"}) merge (n)-[:从属]->(m) ;
+
+Match (n: Field {name:"虚拟代理"}) , (m: Field {name:"虚拟展示"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"虚拟代理"}) , (m: Technology {name:"增强现实"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"CG视觉艺术"}) , (m: Field {name:"虚拟展示"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"可穿戴设备"}) , (m: Field {name:"博物馆展示设计"}) merge (n)-[:从属]->(m) ;
+Match (n: Field {name:"CG视觉艺术"}) , (m: Technology {name:"计算机图形学"}) merge (n)-[:使用]->(m) ;
+
 //2021-04-01
 Match (n: Field {name:"情感设计"}) , (m: Method {name:"主观数据挖掘分析"}) merge (n)-[:使用]->(m) ;
 
@@ -215,15 +242,27 @@ Match (n:Field) set n.nodecolor='icon1.png' return n;
 Match (n:Method) set n.nodecolor='icon2.png' return n;
 Match (n:Data) set n.nodecolor='icon3.png' return n;
 Match (n:Technology) set n.nodecolor='icon4.png' return n;
-Match (n:Field{name:'文化设计'}) set n.nodecolor='icon1_link.gif' return n;
-Match (n:Field{name:'旅游设计'}) set n.nodecolor='icon1_link.gif' return n;
+Match (n:Field{name:'可穿戴设备'}) set n.nodecolor='icon1_link.gif' return n;
+Match (n:Field{name:'虚拟代理'}) set n.nodecolor='icon1_link.gif' return n;
 Match(n:Field{name:'虚拟展示'}) set n.nodecolor='icon1_link.gif' return n;
 Match(n:Method{name:'形状文法'}) set n.nodecolor='icon2_link.gif' return n;
+Match(n:Field{name:'注意力'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'文化产品设计'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'CG视觉艺术'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'DD干预训练'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'汉字'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'书写'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'空间与数学'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'童机交互'}) set n.nodecolor='icon1_link.gif' return n;
+Match(n:Field{name:'博物馆展示设计'}) set n.nodecolor='icon1_link.gif' return n;
 
 Match (n)-[:从属]->(f) Merge (n)<-[:从属]-(f) ;
 Match (n)-[:使用]->(f) Merge (n)<-[:使用]-(f) ;
 
 
+
+
+//链接先不要了 2021-09-11
 Match(n:Field{name:'文化设计'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/fac2z4/tgfxys' return n ; 
 Match(n:Field{name:'旅游设计'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/fac2z4/tarxlf' return n ; 
 Match(n:Field{name:'虚拟展示'}) set n.link = 'https://www.yuque.com/gongqing-brv7z/fac2z4/cm967s' return n ;

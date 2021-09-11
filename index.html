@@ -80,6 +80,7 @@
                         .attr("height", defaultConfig.height)
                 this.config = {
                     alphaDecay:0,  //控制力学模拟衰减率
+                    // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
                 }
                 //定义force对象，力导图
                 this.force = d3.forceSimulation()
@@ -88,8 +89,8 @@
                         .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(defaultConfig.width / 2, defaultConfig.height / 2))
                         .force("charge",d3.forceManyBody())
-                        .force("collide",d3.forceCollide(30).strength(0.2).iterations(7))
-                    // 控制力学模拟衰减率，[0-1] ,设为0则不停止 ， 默认0.0228，直到0.001
+                        .force("collide",d3.forceCollide(35).strength(0.2).iterations(7))
+
                     .alphaDecay(this.config.alphaDecay)
 
                 //设置箭头属性
@@ -107,7 +108,7 @@
                         .attr("orient", "auto")
                         .append("svg:path")
                         .attr("d", "M0,-5L10,0L0,5")
-                        .attr('fill','#5e564d');
+                        .attr('fill','#4c4c4c');
 
                 this.link = this.vis.selectAll("line.link")
                         .data(defaultConfig.data.links)
@@ -118,7 +119,7 @@
                         .attr("x2", function(d) { return d.target.x; })
                         .attr("y2", function(d) { return d.target.y; })
                         .attr("marker-end","url(#arrow)")
-                        .attr('stroke','#5e564d');
+                        .attr('stroke','#4c4c4c');
 
                 var dragstart=function(d, i) {
                     if (!d3.event.active) _that.simulation.alphaTarget(0).restart();
@@ -243,7 +244,7 @@
                         .append("text")
                         .attr("class", "linetext")
                     .attr('text-anchor','middle')
-                    .attr("style","font-size:10px;fill:#5e564d;font-family:微软雅黑")
+                    .attr("style","font-size:8px;fill:#5e564d;font-family:微软雅黑")
                  //   .attr("style","fill:#111;")
                         .attr("x",function(d){ return (d.source.x + d.target.x) / 2})
                         .attr("y",function(d){ return (d.source.y + d.target.y) / 2})
@@ -277,7 +278,7 @@
 
          <div class="container1 row banner-area ">
              <div class = "col-2 left-box">
-                 <h5>Showing XXX of XXX </h5>
+                 <h5>Showing 90 of 90 </h5>
              </div>
              <div class="top-text col-10">
 
@@ -412,7 +413,6 @@
          <script src="js/vendor/bootstrap.min.js"></script>
          <script src="js/popper.min.js"></script>
          <script src="js/vendor/bootstrap.min.js"></script>
-         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
          <script src="js/easing.min.js"></script>
          <script src="js/hoverIntent.js"></script>
          <script src="js/superfish.min.js"></script>

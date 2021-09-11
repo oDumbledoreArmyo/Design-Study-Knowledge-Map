@@ -36,8 +36,8 @@ public class Match2D3_field {
         // Auto-commit transactions are a quick and easy way to wrap a read.
         Result result_field = session.run(
         //!!!查库语句在这!!!
-        "MATCH p= (:" + Lable + ")-[*1..2]->(:" + Lable + ") RETURN p"
-        // "MATCH p = (:Field)-[]->(:Field) RETURN p"
+        //"MATCH p= (:" + Lable + ")-[*1..2]->(:" + Lable + ") RETURN p"
+         "MATCH p = (:Field)-[]->(:Field) RETURN p"
                     );
 
         StringBuffer nodes_field = new StringBuffer();
